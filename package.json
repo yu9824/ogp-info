@@ -7,6 +7,10 @@
   },
   "description": "",
   "main": "index.js",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yu9824/ogp-api.git"
@@ -19,7 +23,8 @@
   },
   "homepage": "https://github.com/yu9824/ogp-api#readme",
   "devDependencies": {
-    "@vercel/node": "^1.7.4"
+    "@vercel/node": "^1.7.4",
+    "vitest": "^4.1.10"
   },
   "dependencies": {
     "@types/jsdom": "^16.2.3",
