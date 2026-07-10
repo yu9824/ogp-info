@@ -20,7 +20,7 @@
   - _Requirements: 1.1, 1.2, 1.3, 1.4, 3.1, 3.2, 3.5_
   - _Boundary: Characterization Suite (unit tests)_
 
-- [ ] 2.2 (P) ローカルHTTP結合の特性テストを作成する
+- [x] 2.2 (P) ローカルHTTP結合の特性テストを作成する
   - 標準ライブラリのHTTPサーバで固定HTMLを返すローカルエンドポイントを立て、実HTTP取得・実DOMパースを通したハンドラ出力を固定する（HTTP取得ライブラリ自身の本文取り扱い＝responseType/エンコーディングの版差を捉える）
   - サーバが 500/非HTML を返す、または接続不可の場合に 400・`error` を固定する
   - 外部サイトへ実アクセスせず localhost 限定で完結させる
@@ -93,3 +93,7 @@
   - _Requirements: 6.1, 6.2, 6.3, 6.4_
   - _Boundary: CI Workflow_
   - _Depends: 3.3_
+
+## Implementation Notes
+
+- Task 2.2: 現行実装（axios@0.24.0 + jsdom@16.7.0）では非HTML(2xx)レスポンスは例外を投げず200+`{}`になる（400になるのは非2xxステータスと接続失敗のみ）。axiosのforced JSON parsingは失敗時に例外化せず元文字列へサイレントフォールバックし、jsdomのnormalizeHTMLは非文字列入力を`String()`で強制文字列化してからパースするため例外が発生しない。tasks.mdの「非HTMLで400」という記述は現行実装の実際の挙動と異なるため、`tests/ogp.integration.test.ts`は推測でテストを書かず実測（200+`{}`）をベースラインとして固定した。Task 3.1/3.3: 依存更新後にこの挙動が変化しテストが赤くなった場合はBehavior Delta Resolution Policyに従うこと（期待値を新ライブラリの挙動に合わせて黙って書き換えない）。
