@@ -11,7 +11,7 @@
   - _Requirements: 3.4_
   - _Boundary: Characterization Suite_
 
-- [ ] 2. Core: 特性テストの作成（現行ライブラリ版でベースライン確立）
+- [x] 2. Core: 特性テストの作成（現行ライブラリ版でベースライン確立）
 - [x] 2.1 (P) ハンドラのユニット特性テストを作成する
   - HTTP取得をモックし、固定HTMLからの抽出範囲（`head > meta[property]` のみ）・キー変換（`og:` 除去・trim）・`content` 欠落時の値 `null` を固定する
   - `url` 未指定・配列（複数指定）・空文字でそれぞれ 400・プレーンテキスト `error` を固定する
@@ -34,7 +34,7 @@
   - _Requirements: 1.5, 3.2_
   - _Boundary: Characterization Suite (config test)_
 
-- [ ] 2.4 (P) フロントのURL組立特性テストを作成する
+- [x] 2.4 (P) フロントのURL組立特性テストを作成する
   - フロントのスクリプトを**非改変のまま** DOM 環境へ読み込み、入力値から `/api/ogp?url=<入力値>` を組み立てて新規タブで開く挙動（`_blank`）を固定する
   - Observable: フロント特性テストが緑になり、UI操作→遷移の挙動が固定される（機構が過剰と判明した場合はURL組立ロジックの最小ユニット検証へ縮退してよい）
   - _Requirements: 1.6, 3.2_
