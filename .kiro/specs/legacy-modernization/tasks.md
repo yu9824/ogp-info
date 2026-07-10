@@ -28,7 +28,7 @@
   - _Requirements: 1.1, 1.4, 3.1, 3.2, 3.5_
   - _Boundary: Characterization Suite (integration tests)_
 
-- [ ] 2.3 (P) CORS設定のアサートテストを作成する
+- [x] 2.3 (P) CORS設定のアサートテストを作成する
   - プラットフォーム設定において `/api/ogp` に `Access-Control-Allow-Origin: *` が対応することをアサートする（稼働サーバ不要）
   - Observable: CORS設定テストが緑になり、CORS挙動が設定レベルで固定される
   - _Requirements: 1.5, 3.2_
@@ -97,3 +97,4 @@
 ## Implementation Notes
 
 - Task 2.2: 現行実装（axios@0.24.0 + jsdom@16.7.0）では非HTML(2xx)レスポンスは例外を投げず200+`{}`になる（400になるのは非2xxステータスと接続失敗のみ）。axiosのforced JSON parsingは失敗時に例外化せず元文字列へサイレントフォールバックし、jsdomのnormalizeHTMLは非文字列入力を`String()`で強制文字列化してからパースするため例外が発生しない。tasks.mdの「非HTMLで400」という記述は現行実装の実際の挙動と異なるため、`tests/ogp.integration.test.ts`は推測でテストを書かず実測（200+`{}`）をベースラインとして固定した。Task 3.1/3.3: 依存更新後にこの挙動が変化しテストが赤くなった場合はBehavior Delta Resolution Policyに従うこと（期待値を新ライブラリの挙動に合わせて黙って書き換えない）。
+- Task 2.3: プロジェクト直下に `.claude/settings.json`（未追跡）がサブエージェントのBash権限承認に伴うハーネス側の副産物として出現することを確認した（このkiro-impl実行セッション開始前には存在せず、`git log --all`にも履歴なし）。いずれのタスクの成果物でもなく、コミットは常に選択的staging（明示パス指定）のみを行うため意図せず混入することはない。以降のタスクレビューでは、このファイルの存在自体を境界違反として扱わないこと（実際のタスク境界はspec上のdeliverableのみで判定する）。
