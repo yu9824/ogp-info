@@ -79,14 +79,14 @@
   - _Requirements: 4.2, 4.3_
   - _Boundary: README_
 
-- [ ] 5. 継続的更新の自動化（Dependabot・CI）
+- [x] 5. 継続的更新の自動化（Dependabot・CI）
 - [x] 5.1 (P) 依存の継続監視を設定する
   - npm 依存と CI（GitHub Actions）依存の両エコシステムを対象に、更新頻度を明示した Dependabot 設定を追加し、更新PRが自動作成される状態にする
   - Observable: Dependabot 設定が存在し、監視対象エコシステム（npm・github-actions）と更新頻度が明示される（github-actions 監視は 5.2 のワークフローと対で機能する）
   - _Requirements: 5.1, 5.2, 5.3, 5.4_
   - _Boundary: Dependabot Config_
 
-- [ ] 5.2 (P) CIで特性テストを自動実行する
+- [x] 5.2 (P) CIで特性テストを自動実行する
   - プルリクエスト（Dependabot の更新PRを含む）と main への push で、Node 22 上で依存インストール→型検査→特性テストを実行し、失敗時にチェックを落とすワークフローを追加する
   - シークレット不要のため安全なイベント（`pull_request`）を用い、権限は最小に絞る（`pull_request_target` は使わない）
   - Observable: ワークフローが存在し、PR上で特性テストが Node 22 で自動実行され、テスト失敗時にチェックが赤になる
