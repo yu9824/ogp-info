@@ -80,7 +80,7 @@
   - _Boundary: README_
 
 - [ ] 5. 継続的更新の自動化（Dependabot・CI）
-- [ ] 5.1 (P) 依存の継続監視を設定する
+- [x] 5.1 (P) 依存の継続監視を設定する
   - npm 依存と CI（GitHub Actions）依存の両エコシステムを対象に、更新頻度を明示した Dependabot 設定を追加し、更新PRが自動作成される状態にする
   - Observable: Dependabot 設定が存在し、監視対象エコシステム（npm・github-actions）と更新頻度が明示される（github-actions 監視は 5.2 のワークフローと対で機能する）
   - _Requirements: 5.1, 5.2, 5.3, 5.4_
