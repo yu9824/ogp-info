@@ -66,14 +66,14 @@
   - _Boundary: OGP Handler, Characterization Suite_
   - _Depends: 3.2, 2.1, 2.2, 2.3, 2.4_
 
-- [ ] 4. Docker廃止と開発手順の更新
+- [x] 4. Docker廃止と開発手順の更新
 - [x] 4.1 (P) ローカル開発用コンテナを廃止する
   - ローカル開発専用の Docker 一式を削除し、デプロイ除外設定から Docker への参照を除去する（CI関連ファイルの除外は維持）
   - Observable: Docker 関連ファイルが存在せず、本番（Vercel）デプロイ対象・挙動が更新前と不変である
   - _Requirements: 4.1, 4.4_
   - _Boundary: Docker (削除), Deploy Ignore Config_
 
-- [ ] 4.2 (P) ローカル開発ドキュメントを一本化する
+- [x] 4.2 (P) ローカル開発ドキュメントを一本化する
   - README の Docker 手順を削除し、Node バージョンマネージャ＋ローカル実行（`vercel dev`）＋テスト実行によるDocker非依存の手順へ差し替える
   - Observable: README に Docker を用いない開発・ローカル実行・テスト手順が記載される
   - _Requirements: 4.2, 4.3_
