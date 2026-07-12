@@ -1,6 +1,6 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import axios from "axios";
-import { JSDOM } from "jsdom";
+import { parse } from "node-html-parser";
 
 /**
  * OGPタグを取得して、そのcontentをJSON形式で返す.
@@ -20,15 +20,19 @@ export default async function (req: VercelRequest, res: VercelResponse) {
   try {
     const responce = await axios.get(url);
     const data = responce.data;
-    const dom = new JSDOM(data);
-    const meta = dom.window.document.querySelectorAll("head > meta");
+    // jsdom は非文字列入力を内部で String() 化してからパースしていたため、
+    // 同一挙動を保つよう明示的に文字列化してからパースする。
+    const root = parse(String(data));
+    const meta = root.querySelectorAll("head > meta");
 
     // metaからOGPを抽出し、JSON形式に変換する
     const ogp = Array.from(meta)
       .filter((element) => element.hasAttribute("property"))
       .reduce<Record<string, string | null>>((pre, ogp) => {
         const property = ogp.getAttribute("property")!.trim().replace("og:", "");
-        const content = ogp.getAttribute("content");
+        // node-html-parser は content 未指定時に undefined を返すため、
+        // jsdom 相当の null に正規化する。
+        const content = ogp.getAttribute("content") ?? null;
         pre[property] = content;
         return pre;
       }, {});
