@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "14.x"
+    "node": ">=22.13.0"
   },
   "description": "",
   "main": "index.js",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yu9824/ogp-api.git"
@@ -19,12 +23,14 @@
   },
   "homepage": "https://github.com/yu9824/ogp-api#readme",
   "devDependencies": {
-    "@vercel/node": "^1.7.4"
+    "@types/jsdom": "^28.0.3",
+    "@vercel/node": "^5.8.23",
+    "jsdom": "^29.1.1",
+    "vitest": "^4.1.10"
   },
   "dependencies": {
-    "@types/jsdom": "^16.2.3",
-    "axios": "^0.24.0",
-    "jsdom": "^16.7.0",
-    "typescript": "^4.5.4"
+    "axios": "^1.18.1",
+    "node-html-parser": "^9.0.0",
+    "typescript": "^5.9.3"
   }
 }
