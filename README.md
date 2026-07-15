@@ -26,3 +26,13 @@ npx vercel dev
 ```
 
 ## Example
+
+## Credits
+The favicon and app icons (`public/favicon.*`, `public/apple-touch-icon.png`,
+`public/android-chrome-*.png`) and the OGP image (`public/ogp.png`) are
+**AI-generated with Google Gemini**.
+
+- The icon source of truth is kept at `assets/favicon-source.google-gemini.png`,
+  which retains the original C2PA Content Credentials and SynthID watermark.
+- The derived favicon PNGs re-embed the AI provenance via XMP
+  (IPTC `DigitalSourceType = trainedAlgorithmicMedia`) and text metadata.
